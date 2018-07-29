@@ -20,7 +20,7 @@ public class Auto1Test
         capabilities.setCapability("marionette",true);
 
         driver = new FirefoxDriver(capabilities);
-        driver.get(neededMessage.webSiteAddress);;
+        driver.get(neededMessage.webSiteAddress);
     }
 
     @Test
@@ -29,20 +29,16 @@ public class Auto1Test
         Xpaths neededXpath = new Xpaths();
         ActionElementOnPage actionWithWebSite = new ActionElementOnPage();
 
-        actionWithWebSite.pressYearFilterMenuButton(neededXpath.yearFilterMenu, driver);
-
-        actionWithWebSite.pressYearFilterSelector(neededXpath.yearFilterSelector, driver);
-
-        actionWithWebSite.setFilterTo2015(neededXpath.yearFilter2015, driver);
-
-        actionWithWebSite.orderPriceAZ(neededXpath.priceFilterAZ, driver);
-
-        actionWithWebSite.sortingVerification(neededXpath.first1PagePrice, neededXpath.last1PagePrice, driver);
+        actionWithWebSite.ActionOnPage(neededXpath.yearFilterMenu, driver); // open first registration year submenu
+        actionWithWebSite.ActionOnPage(neededXpath.yearFilterSelector, driver); // open year dropdown
+        actionWithWebSite.ActionOnPage(neededXpath.yearFilter2015, driver); // select 2015 year
+        actionWithWebSite.ActionOnPage(neededXpath.priceFilterAZ, driver); // apply sorting A-Z (price) for result list
+        actionWithWebSite.sortingVerification(neededXpath.first1PagePrice, neededXpath.last1PagePrice, driver); // verify sorting works correctly
 
         actionWithWebSite.filterVerification(neededXpath.carsFound, neededXpath.currentPageStartPart1,
                                                 neededXpath.currentPageStartPart2, neededXpath.currentPage8,
                                                 neededXpath.currentPageLastPart1, neededXpath.currentPageLastPart2,
-                                                neededXpath.carYearPart1, neededXpath.carYearPart2, driver);
+                                                neededXpath.carYearPart1, neededXpath.carYearPart2, driver); // Filter by year verification
         }
 
     @AfterClass

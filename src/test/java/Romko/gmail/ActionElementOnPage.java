@@ -6,32 +6,46 @@ import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
 
-public class ActionElementOnPage {
-    public static void pressYearFilterMenuButton(String xpath, WebDriver driver) {
+public class ActionElementOnPage
+{
+
+    public static void ActionOnPage(String xpath, WebDriver driver)
+    {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        WebElement yearFilterMenu = driver.findElement(By.xpath(xpath));
-        yearFilterMenu.click();
+        WebElement element = driver.findElement(By.xpath(xpath));
+        element.click();
     }
 
-    public static void pressYearFilterSelector(String xpath, WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        WebElement yearFilterSelector = driver.findElement(By.xpath(xpath));
-        yearFilterSelector.click();
-    }
+//    public static void pressYearFilterMenuButton(String xpath, WebDriver driver)
+//    {
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        WebElement yearFilterMenu = driver.findElement(By.xpath(xpath));
+//        yearFilterMenu.click();
+//    }
+//
+//    public static void pressYearFilterSelector(String xpath, WebDriver driver)
+//    {
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        WebElement yearFilterSelector = driver.findElement(By.xpath(xpath));
+//        yearFilterSelector.click();
+//    }
+//
+//    public static void setFilterTo2015(String xpath, WebDriver driver)
+//    {
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        WebElement yearFilter2015 = driver.findElement(By.xpath(xpath));
+//        yearFilter2015.click();
+//    }
+//
+//    public static void orderPriceAZ(String xpath, WebDriver driver)
+//    {
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        WebElement priceFilterAZ = driver.findElement(By.xpath(xpath));
+//        priceFilterAZ.click();
+//    }
 
-    public static void setFilterTo2015(String xpath, WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        WebElement yearFilter2015 = driver.findElement(By.xpath(xpath));
-        yearFilter2015.click();
-    }
-
-    public static void orderPriceAZ(String xpath, WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        WebElement priceFilterAZ = driver.findElement(By.xpath(xpath));
-        priceFilterAZ.click();
-    }
-
-    public static void sortingVerification(String xpathFirstPrice, String xpathLastPrice, WebDriver driver) throws InterruptedException {
+    public static void sortingVerification(String xpathFirstPrice, String xpathLastPrice, WebDriver driver) throws InterruptedException
+    {
         Messages neededMessage = new Messages();
 
         WebElement first1PagePrice = driver.findElement(By.xpath(xpathFirstPrice));
@@ -100,7 +114,6 @@ public class ActionElementOnPage {
             {
                 WebElement carYear = driver.findElement(By.xpath(carYearPart1 + j + carYearPart2));
                 String test1 = carYear.getText();
-//                test1 = test1.substring(2);
                 test1 = test1.replaceAll("\\D", "");
                 if (Integer.parseInt(test1) < 2015)
                 {
